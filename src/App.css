@@ -1,0 +1,18 @@
+.header { 
+	margin-bottom: 50px;
+}
+
+.book-list {
+	margin-top: 50px;
+}
+
+.search-input {
+	width: 85%;
+	height: 40px;
+	font-size: 20px;
+	margin: 50px 10px;
+}
+
+.book-photo {
+	height: 15em;
+}
