@@ -2,16 +2,20 @@ import React from 'react';
 
 const BookItem = (props) => {
 	let { 
-		title,
+		title = "no title",
 		subTitle,
-		authors,
+		authors = ["No author"],
 		averageRating,
 		description,
 		canonicalVolumeLink,
-		imageLinks: {
-			thumbnail
-		}
-	} = props.book.volumeInfo
+	} = props.book.volumeInfo;
+	let thumbnail;
+
+	if(props.book.volumeInfo.imageLinks.hasOwnProperty('thumbnail')) {
+		thumbnail = props.book.volumeInfo.imageLinks.thumbnail;
+	} else {
+		thumbnail = ""
+	}
 
 	let shortDescription;
 	if ( description) {
@@ -25,8 +29,8 @@ const BookItem = (props) => {
 					<a href={canonicalVolumeLink}><img className="book-photo" alt={title} src={thumbnail} /></a>
 				</div>
 				<div className="col-xs-4">
-					<h2>{title}</h2>
-					<h4>{subTitle}</h4>
+					<h3>{title}</h3>
+					<span>{subTitle}</span>
 				</div>
 				<div className="col-xs-4">
 					<p>{shortDescription ? shortDescription : "Sorry, no description provided"}</p>

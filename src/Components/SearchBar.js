@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 class SearchBar extends Component {
-	handleSubmit = (e) => {
+	handleChange = (e) => {
 		this.props.getValue(e.target.value)
 	}
 
@@ -13,7 +13,7 @@ class SearchBar extends Component {
       		className="search-input"
       		type="text" 
       		placeholder={this.props.value} 
-      		onBlur={this.handleSubmit} 
+      		onChange={this.handleChange} 
       		/>
       </span>
     );

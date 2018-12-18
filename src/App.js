@@ -11,12 +11,8 @@ class App extends Component {
 		super();
 		this.state = {
 			books: [],
-			term: "soccer"
+			term: "Ex. React"
 		}
-	}
-
-	componentWillMount() {
-		this.getBooks();
 	}
 
 	getBooks() {
@@ -34,9 +30,9 @@ class App extends Component {
 			});
 	}
 
-	getInput = (e) => {
+	getInput = (term) => {
 		this.setState({
-			term: e
+			term
 			})
 	};
 
@@ -48,7 +44,6 @@ class App extends Component {
 
   render() {
 		let { books } = this.state;
-		console.log(books);
     return (
       <div className="container">
 				<Header />
@@ -56,8 +51,11 @@ class App extends Component {
 					<div className="col-sm-12">
 					<form onSubmit={this.handleSubmit}>
 						<SearchBar 
-							getValue={this.getInput.bind(this)}
-							value={this.state.term}/>
+							getValue={this.getInput}
+							value={this.state.term}
+							placeholder="Enter a Book Title"
+						/>
+							
 						<input type="submit" className="btn bnt-lg btn-success" value="Submit" />
 					</form>
 					</div>
