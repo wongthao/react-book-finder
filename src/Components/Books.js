@@ -8,10 +8,13 @@ class Books extends Component {
     if (!books) {
       return <h2>Sorry, no books found by this title</h2>
     }
+    const booksWithPhoto = books.filter(book => {
+      return book.volumeInfo.imageLinks
+    })
     
       return (
         <div> 
-          {books.map((book, i) => {
+          {booksWithPhoto.map((book, i) => {
             return <BookItem book={book} key={i} />
           })}
         </div>

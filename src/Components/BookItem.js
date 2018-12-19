@@ -9,12 +9,12 @@ const BookItem = (props) => {
 		description,
 		canonicalVolumeLink,
 	} = props.book.volumeInfo;
-	let thumbnail;
+	let smallThumbnail;
 
-	if(props.book.volumeInfo.imageLinks.hasOwnProperty('thumbnail')) {
-		thumbnail = props.book.volumeInfo.imageLinks.thumbnail;
+	if(!props.book.volumeInfo.imageLinks) {
+		props.book.slice(props.key,1);
 	} else {
-		thumbnail = ""
+		smallThumbnail = props.book.volumeInfo.imageLinks.smallThumbnail;
 	}
 
 	let shortDescription;
@@ -26,7 +26,7 @@ const BookItem = (props) => {
 		<div className="well">
 			<div className="row">
 				<div className="col-xs-4">
-					<a href={canonicalVolumeLink}><img className="book-photo" alt={title} src={thumbnail} /></a>
+					<a href={canonicalVolumeLink}><img className="book-photo" alt={title} src={smallThumbnail} /></a>
 				</div>
 				<div className="col-xs-4">
 					<h3>{title}</h3>
